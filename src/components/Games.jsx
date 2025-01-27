@@ -72,7 +72,7 @@ const Games = () => {
       <div className={`App ${fade ? 'fade-in' : 'fade-out'} w-full flex flex-col md:flex-row`}>
         <RiMenu2Fill className={`${isOpen && "invisible"} text-4xl font-bold ml-5 sticky top-20 z-10 cursor-pointer md:hidden`} onClick={() => toggleMenu()} />
         <div ref={menuRef} className={`w-[65%] rounded-tr-lg rounded-br-lg bg-white/10 backdrop-blur-lg fixed top-0 left-0  h-full p-4 whitespace-nowrap z-30 transition-transform ease-in-out duration-300  ${isOpen ? "translate-x-0 overflow-auto scrollable-container" : "-translate-x-full"} md:bg-transparent md:sticky md:top-0 md:translate-x-0 md:w-52`}>
-          <RiCloseLargeLine className={`${isOpen ? "block" : "hidden"} text-red-600 text-5xl my-5 md:hidden`} onClick={() => toggleMenu()} />
+          <RiCloseLargeLine className={`${isOpen ? "visible" : "invisible"} text-red-600 text-5xl my-5 md:hidden`} onClick={() => toggleMenu()} />
           <h3 className="text-2xl font-bold">New Releases</h3>
           <ul className="text-lg">
             <Toggle
