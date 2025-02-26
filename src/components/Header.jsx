@@ -1,11 +1,24 @@
 import { IoIosSearch } from "react-icons/io";
 import logo from "../assets/games-mania-logo2.png";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { GameContext } from "../context/GameContext";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Header = () => {
   const { searchTerm, setSearchTerm, searchGames, setSearchBarActive } = useContext(GameContext);
+
+  const headerRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(headerRef.current, {
+      y: -10,
+      delay: 0.3,
+      duration: 1,
+      opacity: 0
+    })
+  });  
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -22,7 +35,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-[90%] my-5 p-1 flex items-center justify-evenly bg-white/30 rounded-md backdrop-blur-lg cursor-pointer lg:w-[900px] sticky top-3 z-20">
+    <div ref={headerRef} className="w-[90%] my-5 p-1 flex items-center justify-evenly bg-white/30 rounded-md backdrop-blur-lg cursor-pointer lg:w-[900px] sticky top-3 z-20">
       <img
         onClick={() => navigate("/")}
         className="w-12 h-10 rounded"

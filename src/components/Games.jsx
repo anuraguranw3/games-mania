@@ -16,7 +16,6 @@ import LoadGames from "./LoadGames";
 import { getLast30Days, getThisWeek, getNextWeek } from "./dateUtils";
 
 const Games = () => {
-  const [fade, setFade] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { games, isLoading, activeToggle, setActiveToggle } = useContext(GameContext);
   const menuRef = useRef(null);
@@ -48,14 +47,6 @@ const Games = () => {
   }, []);
 
   useEffect(() => {
-    setFade(true);
-
-    return () => {
-      setFade(false);
-    };
-  }, []);
-
-  useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -69,7 +60,7 @@ const Games = () => {
 
   return (
     <>
-      <div className={`App ${fade ? 'fade-in' : 'fade-out'} w-full flex flex-col md:flex-row`}>
+      <div className={`w-full flex flex-col md:flex-row`}>
         <RiMenu2Fill className={`${isOpen && "invisible"} text-4xl font-bold ml-5 sticky top-20 z-10 cursor-pointer md:hidden`} onClick={() => toggleMenu()} />
         <div ref={menuRef} className={`w-[65%] rounded-tr-lg rounded-br-lg bg-white/10 backdrop-blur-lg fixed top-0 left-0  h-full p-4 whitespace-nowrap z-30 transition-transform ease-in-out duration-300  ${isOpen ? "translate-x-0 overflow-auto scrollable-container" : "-translate-x-full"} md:bg-transparent md:sticky md:top-20 md:translate-x-0 md:w-52`}>
           <RiCloseLargeLine className={`${isOpen ? "visible" : "invisible"} text-red-600 text-5xl my-5 md:hidden`} onClick={() => toggleMenu()} />

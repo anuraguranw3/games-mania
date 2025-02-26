@@ -2,13 +2,27 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import gitHubIcon from "../assets/git_icon.png";
 import rawgApiIcon from "../assets/favicon.png";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Home = () => {
-
   const navigate = useNavigate();
 
+  const homeRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(homeRef.current, {
+      y: -10,
+      delay: 0.3,
+      duration: 1,
+      opacity: 0
+    })
+  });  
+
+
   return (
-    <div className="w-[95%] h-auto m-auto p-3 mt-8 flex flex-col items-center justify-center gap-7">
+    <div ref={homeRef} className="w-[95%] h-auto m-auto p-3 mt-8 flex flex-col items-center justify-center gap-7">
       <div className="w-[98%] h-auto p-4 flex flex-col text-center gap-4 bg-white/30 rounded-2xl backdrop-blur-lg">
         <h2 className="text-xl font-extrabold">Games Mania</h2>
         <p className="text-lg font-semibold">is a game discovery website powered by the RAWG API. It allows users to explore a vast collection of games, including details, images, and game information, but please note that this is a non-commercial site. Games Mania is not an official game store or marketplace, and no transactions can be made on this site. This site is created for informational purposes only and is not affiliated with any game developers or distributors. All game data is provided by the RAWG API and is not for sale on this platform.</p>
