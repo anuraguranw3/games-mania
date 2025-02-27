@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const GameCard = ({ name, backgroundImage, slug, genres, id }) => {
   return (
     <Link to={`/game/${id}`}>
-      <div className="w-full bg-blue-500 overflow-hidden px-2 py-[10px] cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
+      <div className="w-full bg-green-500 overflow-hidden px-2 py-[10px] cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
         <div className="p-[5px] rounded-xl bg-white/20 backdrop-blur-lg">
           <div>
             <img className="rounded-lg" src={backgroundImage} alt={slug} />

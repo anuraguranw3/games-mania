@@ -26,6 +26,7 @@ export const GameContextProvider = ({ children }) => {
   const fetchGames = (queries = []) => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const apiKey = import.meta.env.VITE_API_KEY;
+    console.log("key ", apiKey, " url ", apiUrl);
 
     setIsLoading(true);
     let url = `${apiUrl}?key=${apiKey}`;
